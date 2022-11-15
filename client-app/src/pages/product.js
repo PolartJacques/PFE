@@ -8,7 +8,6 @@ const Product = () => {
   }
 
   const handleClickMeButton = () => {
-    // const event = new CustomEvent('build', { detail: elem.dataset.time });
     const customEvent = new CustomEvent('myCustomEvent', { detail: { name: 'click me !' } })
     dispatchEvent(customEvent)
   }
