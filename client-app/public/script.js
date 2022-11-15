@@ -1,6 +1,3 @@
-const ONE_MINUTE_IN_MLS = 60000
-const FIVE_MINUTE_IN_MLS = 5 * ONE_MINUTE_IN_MLS
-
 const data = {
 	ip: "",
 	origin: "",
@@ -53,8 +50,7 @@ const fetchContextData = async () => {
 }
 
 const saveOriginInCookies = () => {
-	let expirationDate = new Date(Date.now() + FIVE_MINUTE_IN_MLS)
-	document.cookie = `origin=${data.origin};expires=${expirationDate.toUTCString()}`
+	document.cookie = `origin=${data.origin}`
 }
 
 const sendAction = (action) => {
