@@ -1,5 +1,6 @@
+import config from "./config.json" assert { type: "json" }
+
 const data = {
-	ip: "",
 	origin: "",
 	userId: ""
 }
@@ -19,14 +20,6 @@ const getUserId = () => {
 	return newUserId
 }
 
-const getIpAddress = async () => {
-	const fullIp = (await (await fetch('https://api.ipify.org?format=json')).json()).ip
-	const hiddenIp = fullIp.split(".")
-	hiddenIp[2] = 0
-	hiddenIp[3] = 0
-	return hiddenIp.join(".")
-}
-
 const getOriginCookie = () => {
   const value = `; ${document.cookie}`
   const parts = value.split(`; origin=`)
@@ -44,7 +37,6 @@ const getOrigin = () => {
 }
 
 const fetchContextData = async () => {
-	data.ip = await getIpAddress()
 	data.origin = getOrigin()
 	data.userId = getUserId()
 }
@@ -79,10 +71,37 @@ const listenToLocationChange = () => {
 	})
 }
 
-const listenToCustomEvent = () => {
-	window.addEventListener('myCustomEvent', event => {
-		sendAction(event.detail.name)
-	})
+const manageEventListeners = (nodes, action) => {
+	const events = config.events
+
+	nodes.forEach(node => {
+		events.forEach(event => {
+			if (event.urlPathName !== window.location.pathname) return
+			const elements = Array.from(node.querySelectorAll(event.querySelector))
+				.filter(element => event.innerText ? element.innerText === event.innerText : true)
+			if (action === "add") {
+				elements.forEach(element => element.addEventListener(event.eventType, () => sendAction(event.name)))
+			} else if (action === "remove") {
+				elements.forEach(element => element.removeEventListener(event.eventType, () => sendAction(event.name)))
+			}
+		})
+	});
+}
+
+const listenToEvents = () => {
+	const observer = new MutationObserver(mutations => {
+		mutations.forEach(mutation => {
+			manageEventListeners(mutation.addedNodes, "add")
+			manageEventListeners(mutation.removedNodes, "remove")
+		});
+	});
+	
+	var observerConfig = {
+		childList: true,
+		subtree: true
+	};
+	
+	observer.observe(document, observerConfig);
 }
 
 const main = async () => {
@@ -91,7 +110,7 @@ const main = async () => {
 	sendAction("visit or reload")
 
 	listenToLocationChange()
-	listenToCustomEvent()
+	listenToEvents()
 }
 
 main()

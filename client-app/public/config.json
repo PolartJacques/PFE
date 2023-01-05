@@ -1,0 +1,11 @@
+{
+  "events": [
+    {
+      "name": "secret button clicked",
+      "eventType": "click",
+      "querySelector": "button",
+      "innerText": "secret button",
+      "urlPathName": "/product"
+    }
+  ]
+}
