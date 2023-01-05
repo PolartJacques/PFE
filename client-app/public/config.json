@@ -1,4 +1,5 @@
 {
+  "production": false,
   "events": [
     {
       "name": "secret button clicked",
@@ -7,7 +8,8 @@
       "elementAtributes": {
         "innerText": "secret button"
       },
-      "urlPathName": "/product"
+      "urlPathName": "/product",
+      "debug": false
     }
   ]
 }

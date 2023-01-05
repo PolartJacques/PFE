@@ -46,7 +46,13 @@ const saveOriginInCookies = () => {
 }
 
 const sendAction = (action) => {
-	console.log({ ...data, action, date: Date.now(), location: window.location.href})
+	const payload = { ...data, action, date: Date.now(), location: window.location.href}
+	const isInProductionMode = config.production
+	if (!isInProductionMode) {
+		console.log(payload)
+		return
+	}
+	// TODO: connect to api and send payload
 }
 
 const listenToLocationChange = () => {
@@ -77,6 +83,7 @@ const manageEventListeners = (nodes, action) => {
 			if (event.urlPathName !== window.location.pathname) return
 			const elements = Array.from(node.querySelectorAll(event.querySelector))
 				.filter(element => Object.keys(event.elementAtributes).every(atribute => element[atribute] === event.elementAtributes[atribute]))
+			if (event.debug) console.log(`${event.name} : target elements`, elements)
 			if (action === "add") {
 				elements.forEach(element => element.addEventListener(event.eventType, () => sendAction(event.name)))
 			} else if (action === "remove") {
