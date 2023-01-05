@@ -4,7 +4,9 @@
       "name": "secret button clicked",
       "eventType": "click",
       "querySelector": "button",
-      "innerText": "secret button",
+      "elementAtributes": {
+        "innerText": "secret button"
+      },
       "urlPathName": "/product"
     }
   ]

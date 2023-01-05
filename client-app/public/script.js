@@ -72,13 +72,11 @@ const listenToLocationChange = () => {
 }
 
 const manageEventListeners = (nodes, action) => {
-	const events = config.events
-
 	nodes.forEach(node => {
-		events.forEach(event => {
+		config.events.forEach(event => {
 			if (event.urlPathName !== window.location.pathname) return
 			const elements = Array.from(node.querySelectorAll(event.querySelector))
-				.filter(element => event.innerText ? element.innerText === event.innerText : true)
+				.filter(element => Object.keys(event.elementAtributes).every(atribute => element[atribute] === event.elementAtributes[atribute]))
 			if (action === "add") {
 				elements.forEach(element => element.addEventListener(event.eventType, () => sendAction(event.name)))
 			} else if (action === "remove") {
