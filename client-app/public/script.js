@@ -5,6 +5,20 @@ const data = {
 	userId: ""
 }
 
+const getConfigError = () => {
+	const { events } = config
+	const doesEveryEventhasName = events.every(event => Boolean(event.name))
+	if (!doesEveryEventhasName) return 'all events must have a name property'
+	const eventsName = events.map(event => event.name)
+	for(let i = 0; i < eventsName.length; i++) {
+		const eventName = eventsName[i]
+		const hasEventWithgSameName = eventsName.indexOf(eventName) !== i;
+		if (hasEventWithgSameName) return `event must have unique names : "${eventName}"`
+	}
+	const eventWithNoEventTypeProperty = events.find(event => !event.eventType)
+	if (eventWithNoEventTypeProperty) return `event "${eventWithNoEventTypeProperty.name}" must have eventType property`
+}
+
 const uuidv4 = () => {
 	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
 			const r = Math.random() * 16 | 0, v = c === 'x' ? r : ((r & 0x3) | 0x8)
@@ -80,7 +94,7 @@ const listenToLocationChange = () => {
 const manageEventListeners = (nodes, action) => {
 	nodes.forEach(node => {
 		config.events.forEach(event => {
-			if (event.urlPathName !== window.location.pathname) return
+			if (Boolean(event.urlPathName) && event.urlPathName !== window.location.pathname) return
 			const elements = Array.from(node.querySelectorAll(event.querySelector))
 				.filter(element => Object.keys(event.elementAtributes).every(atribute => element[atribute] === event.elementAtributes[atribute]))
 			if (event.debug) console.log(`${event.name} : target elements`, elements)
@@ -110,6 +124,11 @@ const listenToEvents = () => {
 }
 
 const main = async () => {
+	const configError = getConfigError()
+	if (Boolean(configError)) {
+		console.error(configError)
+		return
+	}
 	await fetchContextData()
 	saveOriginInCookies()
 	sendAction("visit or reload")
