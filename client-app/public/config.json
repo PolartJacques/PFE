@@ -1,5 +1,6 @@
 {
   "production": false,
+  "apiEndpoint": "http://localhost:8888/kafkaapp/post",
   "events": [
     {
       "name": "secret button clicked",

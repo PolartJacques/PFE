@@ -66,7 +66,14 @@ const sendAction = (action) => {
 		console.log(payload)
 		return
 	}
-	// TODO: connect to api and send payload
+	fetch(config.apiEndpoint, {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+	})
 }
 
 const listenToLocationChange = () => {
