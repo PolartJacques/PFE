@@ -1,15 +1,41 @@
 {
   "production": false,
-  "apiEndpoint": "http://localhost:8888/kafkaapp/post",
+  "apiEndpoint": "http://162.19.48.206:8888/kafkaapp/post",
   "events": [
     {
-      "name": "secret button clicked",
+      "name": "edit billing",
       "eventType": "click",
-      "querySelector": "button",
+      "querySelector": "button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.css-k10vsc-MuiButtonBase-root-MuiButton-root",
       "elementAtributes": {
-        "innerText": "secret button"
       },
-      "urlPathName": "/product",
+      "urlPathName": "/billing",
+      "debug": false
+    },
+    {
+      "name": "delete Ethan James billing",
+      "eventType": "click",
+      "querySelector": "#bill-3 button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.css-b5lw23-MuiButtonBase-root-MuiButton-root",
+      "elementAtributes": {
+      },
+      "urlPathName": "/billing",
+      "debug": false
+    },
+    {
+      "name": "double click delete Lucas Harper billing",
+      "eventType": "dblclick",
+      "querySelector": "#bill-2 button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.css-b5lw23-MuiButtonBase-root-MuiButton-root",
+      "elementAtributes": {
+      },
+      "urlPathName": "/billing",
+      "debug": false
+    },
+    {
+      "name": "aux click delete Oliver Liam billing",
+      "eventType": "contextmenu",
+      "querySelector": "#bill-1 button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.css-b5lw23-MuiButtonBase-root-MuiButton-root",
+      "elementAtributes": {
+      },
+      "urlPathName": "/billing",
       "debug": false
     }
   ]

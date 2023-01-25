@@ -1,4 +1,4 @@
-import config from "./config.json" assert { type: "json" }
+let config = {}
 
 const data = {
 	origin: "",
@@ -60,7 +60,7 @@ const saveOriginInCookies = () => {
 }
 
 const sendAction = (action) => {
-	const payload = { ...data, action, date: Date.now(), location: window.location.href}
+	const payload = { ...data, action, date: Date.now(), location: window.location.href }
 	const isInProductionMode = config.production
 	if (!isInProductionMode) {
 		console.log(payload)
@@ -68,10 +68,7 @@ const sendAction = (action) => {
 	}
 	fetch(config.apiEndpoint, {
     method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
 	})
 }
@@ -102,9 +99,10 @@ const manageEventListeners = (nodes, action) => {
 	nodes.forEach(node => {
 		config.events.forEach(event => {
 			if (Boolean(event.urlPathName) && event.urlPathName !== window.location.pathname) return
+			if (typeof node.querySelectorAll !== "function") return
 			const elements = Array.from(node.querySelectorAll(event.querySelector))
 				.filter(element => Object.keys(event.elementAtributes).every(atribute => element[atribute] === event.elementAtributes[atribute]))
-			if (event.debug) console.log(`${event.name} : target elements`, elements)
+			if (event.debug) console.log(`${event.name} : targeted elements`, elements)
 			if (action === "add") {
 				elements.forEach(element => element.addEventListener(event.eventType, () => sendAction(event.name)))
 			} else if (action === "remove") {
@@ -115,6 +113,7 @@ const manageEventListeners = (nodes, action) => {
 }
 
 const listenToEvents = () => {
+	manageEventListeners([document], "add");
 	const observer = new MutationObserver(mutations => {
 		mutations.forEach(mutation => {
 			manageEventListeners(mutation.addedNodes, "add")
@@ -131,6 +130,7 @@ const listenToEvents = () => {
 }
 
 const main = async () => {
+	config = await (await fetch("config.json")).json() 
 	const configError = getConfigError()
 	if (Boolean(configError)) {
 		console.error(configError)
