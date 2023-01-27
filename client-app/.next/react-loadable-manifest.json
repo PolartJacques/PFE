@@ -1,0 +1,20 @@
+{
+  "../components/product/Images.tsx -> ./ImagesSlider": {
+    "id": "../components/product/Images.tsx -> ./ImagesSlider",
+    "files": [
+      "static/chunks/components_product_ImagesSlider_tsx.js"
+    ]
+  },
+  "../layouts/Main.tsx -> ../components/AsideMenu": {
+    "id": "../layouts/Main.tsx -> ../components/AsideMenu",
+    "files": [
+      "static/chunks/components_AsideMenu_tsx.js"
+    ]
+  },
+  "category/[slug].tsx -> ../../components/FilterForm": {
+    "id": "category/[slug].tsx -> ../../components/FilterForm",
+    "files": [
+      "static/chunks/components_FilterForm_tsx.js"
+    ]
+  }
+}

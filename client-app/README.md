@@ -1,217 +1,65 @@
-# [Material Dashboard 2 React](http://demos.creative-tim.com/material-dashboard-react/#/dashboard?ref=readme-mdr) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?url=https://www.creative-tim.com/product/material-dashboard-react&text=Check%20Material%20Dashboard%202%20react%20made%20by%20@CreativeTim%20#webdesign%20#dashboard%20#materialdesign%20#react%20https://www.creative-tim.com/product/material-dashboard-react)
+# The Mars: Next.js E-commerce template 💻
 
-![version](https://img.shields.io/badge/version-2.1.0-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/material-dashboard-react.svg)](https://github.com/creativetimofficial/material-dashboard-react/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/material-dashboard-react.svg)](https://github.com/creativetimofficial/material-dashboard-react/issues?q=is%3Aissue+is%3Aclosed)
+Ready to use [Next.js](https://nextjs.org) (TypeScript) template to create  high-performance
+e-commerce websites.
 
-![Image](https://s3.amazonaws.com/creativetim_bucket/products/71/original/material-dashboard-react.jpg?1638950990)
+Free 👍. Ready to use 😎. Just clone & deploy! 🤘
 
-Material Dashboard 2 React is our newest free MUI Admin Template based on React. If you’re a developer looking to create an admin dashboard that is developer-friendly, rich with features, and highly customisable, here is your match. Our innovative MUI & React dashboard comes with a beautiful design inspired by Google's Material Design and it will help you create stunning websites & web apps to delight your clients.
+## Online Demo ⚡️
 
-**Fully Coded Elements**
-Material Dashboard 2 React is built with over 70 frontend individual elements, like buttons, inputs, navbars, nav tabs, cards, or alerts, giving you the freedom of choosing and combining. All components can take variations in color, which you can easily modify using MUI styled() API and sx prop. You will save a lot of time going from prototyping to full-functional code because all elements are implemented.
+[mars.demos.my-boundless.app](https://mars.demos.my-boundless.app/) - deployed to Netlify.
 
-This free MUI & React Dashboard is coming with prebuilt design blocks, so the development process is seamless,
-switching from our pages to the real website is very easy to be done.
+## About Boundless Commerce
 
-View [all components here](https://www.creative-tim.com/learning-lab/react/alerts/material-dashboard/).
+![Boundless-commerce.com](assets/logo.svg)
 
-**Documentation built by Developers**
+[Boundless-commerce.com](https://boundless-commerce.com/) - API’s First Headless E-commerce CMS: We Provide An 
+Admin-Side For Store Management, Powerful API, And Ready-To-Use Checkout Area.
 
-Each element is well presented in very complex documentation.
+## Getting Started
 
-You can read more about the [documentation here](https://www.creative-tim.com/learning-lab/react/overview/material-dashboard/).
+1. Go to [Boundless-commerce.com](https://boundless-commerce.com/) and create a free account (no credit card required).
+2. Go to "Control panel" -> "Settings" -> "Access tokens" and create a new one: 
 
-**Example Pages**
+![](assets/settings-menu.png)
+![](assets/create-access-token-btn.png)
 
-If you want to get inspiration or just show something directly to your clients, you can jump-start your development with our pre-built example pages. You will be able to quickly set up the basic structure for your web project.
+3. Copy `.env.example` to `.env`
+4. Modify `.env`: put values for the `BOUNDLESS_API_PERMANENT_TOKEN` and `BOUNDLESS_INSTANCE_ID`, copy values from:
 
-View [example pages here](https://demos.creative-tim.com/material-dashboard-react/#/dashboard).
+![](assets/copy-credentials.png)
 
-**HELPFUL LINKS**
+5. Install dependencies: `yarn install`
+6. `yarn dev` - to start locally, then open `http://localhost:3000`
+7. If you want to have absolute URLs in the sitemap.xml and OpenGraph meta tags 
+you need to also specify `BOUNDLESS_BASE_URL`.
 
-- View [Github Repository](https://github.com/creativetimofficial/material-dashboard-react)
-- Check [FAQ Page](https://www.creative-tim.com/faq)
+### Optional parameters
 
-#### Special thanks
+- `BOUNDLESS_BASE_URL` - Base URL if you want to have absolute 
+URLs in the sitemap.xml and OpenGraph meta tags.
+- `BOUNDLESS_PRODUCTS_IMAGE_PROPORTION` - Specify resize proportion so product images in lists have 
+the same size. Possible values are: `1-1`, `2-3`, `3-2`,`4-5`, `5-4`, `3-4`, `4-3`, `16-9`, `9-16`.
 
-During the development of this dashboard, we have used many existing resources from awesome developers. We want to thank them for providing their tools open source:
+## What is included?
 
-- [MUI](https://mui.com/) - The React UI library for faster and easier web development.
-- [React ChartJS 2](http://reactchartjs.github.io/react-chartjs-2/#/) - Simple yet flexible React charting for designers & developers.
-- [ChromaJS](https://gka.github.io/chroma.js/) - A small-ish zero-dependency JavaScript library for all kinds of color conversions and color scales.
+Fully ready E-Commerce website with a hierarchical catalog, product widgets, 
+filters, and marketing components like sliders and carousels.
 
-Let us know your thoughts below. And good luck with development!
+We developed the template keeping SEO in mind: schema markup, sitemap, and 
+all necessary meta-tags.
 
-## Table of Contents
+Shopping cart with a nice animated widget and [Fully customizable React checkout](https://github.com/kirill-zhirnov/boundless-checkout-react).
 
-- [Versions](#versions)
-- [Demo](#demo)
-- [Quick Start](#quick-start)
-- [Documentation](#documentation)
-- [File Structure](#file-structure)
-- [Browser Support](#browser-support)
-- [Resources](#resources)
-- [Reporting Issues](#reporting-issues)
-- [Technical Support or Questions](#technical-support-or-questions)
-- [Licensing](#licensing)
-- [Useful Links](#useful-links)
+User friendly mobile version.
 
-## Versions
+## How to modify the theme color?
 
-[<img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/react-logo.png?raw=true" width="60" height="60" />](https://www.creative-tim.com/product/material-dashboard-react?ref=readme-mdr)
+- Open `styles/styles.scss`
+- Uncomment one of the `$theme-color` variable definitions. You can put own color if you want. All related colors 
+will be adjusted automatically.
+- If you need deeper customization - modify variables in `styles/components/_variables.scss`
 
-| React |
-| ----- |
+---
 
-| [![Material Dashboard React](https://s3.amazonaws.com/creativetim_bucket/products/71/thumb/material-dashboard-react.jpg?1638950990)](http://demos.creative-tim.com/material-dashboard-react/#/dashboard?ref=readme-mdr)
-
-## Demo
-
-- [Dashboard](http://demos.creative-tim.com/material-dashboard-react/#/dashboard?ref=readme-sudr)
-- [Profile](https://demos.creative-tim.com/material-dashboard-react/#/profile?ref=readme-sudr)
-- [RTL](https://demos.creative-tim.com/material-dashboard-react/#/rtl?ref=readme-sudr)
-- [Sign In](https://demos.creative-tim.com/material-dashboard-react/#/authentication/sign-in?ref=readme-sudr)
-- [Sign Up](https://demos.creative-tim.com/material-dashboard-react/#/authentication/sign-up?ref=readme-sudr)
-
-[View More](https://demos.creative-tim.com/material-dashboard-react/#/dashboard?ref=readme-mdr).
-
-## Quick start
-
-Quick start options:
-
-- Download from [Creative Tim](https://www.creative-tim.com/product/material-dashboard-react?ref=readme-mdr).
-
-## Terminal Commands
-
-1. Download and Install NodeJs LTS version from [NodeJs Official Page](https://nodejs.org/en/download/).
-2. Navigate to the root ./ directory of the product and run `yarn install` or `npm install` to install our local dependencies.
-
-## Documentation
-
-The documentation for the Material Dashboard is hosted at our [website](https://www.creative-tim.com/learning-lab/react/overview/material-dashboard/?ref=readme-mdr).
-
-### What's included
-
-Within the download you'll find the following directories and files:
-
-```
-material-dashboard-react
-    ├── public
-    │   ├── apple-icon.png
-    │   ├── favicon.png
-    │   ├── index.html
-    │   ├── manifest.json
-    │   └── robots.txt
-    ├── src
-    │   ├── assets
-    │   │   ├── images
-    │   │   └── theme
-    │   │       ├── base
-    │   │       ├── components
-    │   │       ├── functions
-    │   │       ├── index.js
-    │   │       └── theme-rtl.js
-    │   │   └── theme-dark
-    │   │       ├── base
-    │   │       ├── components
-    │   │       ├── functions
-    │   │       ├── index.js
-    │   │       └── theme-rtl.js
-    │   ├── components
-    │   │   ├── MDAlert
-    │   │   ├── MDAvatar
-    │   │   ├── MDBadge
-    │   │   ├── MDBox
-    │   │   ├── MDButton
-    │   │   ├── MDInput
-    │   │   ├── MDPagination
-    │   │   ├── MDProgress
-    │   │   ├── MDSnackbar
-    │   │   └── MDTypography
-    │   ├── context
-    │   ├── examples
-    │   │   ├── Breadcrumbs
-    │   │   ├── Cards
-    │   │   ├── Charts
-    │   │   ├── Configurator
-    │   │   ├── Footer
-    │   │   ├── Items
-    │   │   ├── LayoutContainers
-    │   │   ├── Lists
-    │   │   ├── Navbars
-    │   │   ├── Sidenav
-    │   │   ├── Tables
-    │   │   └── Timeline
-    │   ├── layouts
-    │   │   ├── authentication
-    │   │   ├── billing
-    │   │   ├── dashboard
-    │   │   ├── notifications
-    │   │   ├── profile
-    │   │   ├── rtl
-    │   │   └── tables
-    │   ├── App.js
-    │   ├── index.js
-    │   └── routes.js
-    ├── .eslintrc.json
-    ├── .prettierrc.json
-    ├── CHANGELOG.md
-    ├── ISSUE_TEMPLATE.md
-    ├── jsconfig.json
-    ├── LICENSE.md
-    ├── package.json
-    └── README.md
-```
-
-## Browser Support
-
-At present, we officially aim to support the last two versions of the following browsers:
-
-<img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/chrome.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/firefox.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/edge.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/safari.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/opera.png" width="64" height="64">
-
-## Resources
-
-- [Live Preview](https://demos.creative-tim.com/material-dashboard-react/#/dashboard?ref=readme-mdr)
-- [Download Page](https://www.creative-tim.com/product/material-dashboard-react?ref=readme-mdr)
-- Documentation is [here](https://www.creative-tim.com/learning-lab/react/overview/material-dashboard/?ref=readme-mdr)
-- [License Agreement](https://www.creative-tim.com/license?ref=readme-mdr)
-- [Support](https://www.creative-tim.com/contact-us?ref=readme-mdr)
-- Issues: [Github Issues Page](https://github.com/creativetimofficial/material-dashboard-react/issues)
-
-## Reporting Issues
-
-We use GitHub Issues as the official bug tracker for the Material Dashboard React. Here are some advices for our users that want to report an issue:
-
-1. Make sure that you are using the latest version of the Material Dashboard React. Check the CHANGELOG from your dashboard on our [website](https://www.creative-tim.com/product/material-dashboard-react?ref=readme-mdr).
-2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
-3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
-
-## Technical Support or Questions
-
-If you have questions or need help integrating the product please [contact us](https://www.creative-tim.com/contact-us?ref=readme-mdr) instead of opening an issue.
-
-## Licensing
-
-- Copyright 2021 [Creative Tim](https://www.creative-tim.com?ref=readme-mdr)
-- Creative Tim [license](https://www.creative-tim.com/license?ref=readme-mdr)
-
-## Useful Links
-
-- [More products](https://www.creative-tim.com/templates?ref=readme-mdr) from Creative Tim
-
-- [Tutorials](https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w)
-
-- [Freebies](https://www.creative-tim.com/bootstrap-themes/free?ref=readme-mdr) from Creative Tim
-
-- [Affiliate Program](https://www.creative-tim.com/affiliates/new?ref=readme-mdr) (earn money)
-
-##### Social Media
-
-Twitter: <https://twitter.com/CreativeTim>
-
-Facebook: <https://www.facebook.com/CreativeTim>
-
-Dribbble: <https://dribbble.com/creativetim>
-
-Google+: <https://plus.google.com/+CreativetimPage>
-
-Instagram: <https://instagram.com/creativetimofficial>
+[NextJS eCommerce templates](https://boundless-commerce.com/templates) - Free. Ready to use. Just clone & deploy!
